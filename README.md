@@ -29,6 +29,7 @@ Also please check out other cool programming languages used in computer music, s
 * Pure Data
 * Max
 * TidalCycles
+* FoxDot
 
 Some cool forums and communities:
 * [https://llllllll.co/](https://llllllll.co/): from Monome.
