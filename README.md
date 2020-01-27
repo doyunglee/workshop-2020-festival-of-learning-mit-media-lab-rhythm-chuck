@@ -14,6 +14,12 @@ Please download the ChucK installer or executable from the ChucK website, after 
 
 ChucK scripts have the extension ".ck"
 
+We can write code with any text editor.
+
+We will write and execute code with miniAudicle.
+
+Remember to start the virtual machine.
+
 ## Scripts index
 
 * [00-intro.ck](./scripts/00-intro.ck): examples of comments.
@@ -35,7 +41,7 @@ Some cool forums and communities:
 * [https://llllllll.co/](https://llllllll.co/): from Monome.
 * [https://chat.toplap.org/](https://chat.toplap.org/)
 * [https://livecode.nyc/](https://livecode.nyc/): community of live coders in NYC.
-
+* International Conference on Live Coding.
 
 ## License
 
