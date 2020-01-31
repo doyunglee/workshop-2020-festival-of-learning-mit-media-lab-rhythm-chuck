@@ -1,11 +1,11 @@
-// ex06-volca.ck
+// ex06-midi.ck
 // example of loading samples
 // runs on chuck 1.4.0.0
 // written by by aaron montoya-moraga & manaswi mishra
 // for mit media lab festival of learning 2020 
 
 // print file name
-<<< "ex06-volca.ck" >>>;
+<<< "ex06-midi.ck" >>>;
 
 // declare new MidiOut variable
 MidiOut myOutput;

@@ -2,7 +2,7 @@
 
 ## About
 
-This is a workshop written and taught by Aarón Montoya-Moraga, with teaching assistant Manaswi Mishra, research assistants at MIT Media Lab's Opera of the Future research group.
+This is a workshop written and taught by [Aarón Montoya-Moraga](https://montoyamoraga.io/) and [Manaswi Mishra](https://manaswimishra.com/), research assistants at [MIT Media Lab](https://www.media.mit.edu/)'s [Opera of the Future](https://www.media.mit.edu/groups/opera-of-the-future/) research group.
 
 ## Software installation
 
@@ -14,15 +14,25 @@ Please download the ChucK installer or executable from the ChucK website, after 
 
 ChucK scripts have the extension ".ck"
 
-We can write code with any text editor.
-
-We will write and execute code with miniAudicle.
+We can write code with any text editor, today we will use miniAudicle.
 
 Remember to start the virtual machine.
 
+All ChucK commands end with a semicolon ";"
+
 ## Scripts index
 
-* [00-intro.ck](./scripts/00-intro.ck): examples of comments.
+* [ex00-intro](./scripts/ex00-intro.ck): comments and variables.
+* [ex01-sine](./scripts/ex01-sine.ck): sine waves.
+* [ex02-time](./scripts/ex02-time.ck): time control
+* [ex03-samples](./scripts/ex03-samples.ck): audio sample playback.
+* [ex04-arrays](./scripts/ex04-arrays.ck): arrays for rhythm.
+* [ex05-random](./scripts/ex05-random.ck): randomness for sequencing.
+* [ex06-midi](./scripts/ex06-midi.ck): MIDI output to hardware.
+* [ex07-receiveKorgVolcaBeats](./scripts/ex07-receiveKorgVolcaBeats.ck): Open Sound Control receiver for Korg Volca Beats. 
+* [ex07-receivePolyendPerc](./scripts/ex07-receivePolyendPerc.ck): Open Sound Control receiver for Polyend Perc.
+* [ex07-sendKorgVolcaBeats](./scripts/ex07-sendKorgVolcaBeats.ck): Open Sound Control sender for Korg Volca Beats.
+* [ex07-sendPolyendPerc](./scripts/ex07-sendPolyendPerc.ck): Open Sound Control sender for Polyend Perc.
 
 ## Further learning
 
