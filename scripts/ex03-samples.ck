@@ -7,27 +7,38 @@
 // print file name
 <<< "ex03-samples.ck" >>>;
 
-// 
+// print current directory
+// tip: it ends with "/" character
+<<< me.sourceDir() >>>;
 
-// declare oscillator
-SinOsc myOsc;
+// create string variable for storing samples directory
+me.sourceDir() + "/../samples/" => string dirSamples;
 
-// connect osc to dac
-myOsc => dac;
+// print samples folder
+<<< dirSamples >>>;
 
-// define oscillator's frequency, in Hertz
-// human hearing frequency range is ~ 20 to 20,000 Hz
-440 => myOsc.freq;
+// create strings for storing samples names
+"hihatClosed" => string nameHihatClosed;
+"congaLow" => string nameCongaLow;
 
-// define oscillator's gain, normalized 0.0 to 1.0
-0.7 => myOsc.gain;
+// create strings for storing file format
+".wav" => string fileFormat;
 
-// let time flow
-// chuck time to now
-0.7 :: second => now;
+// create buffers for storing samples
+SndBuf hihatClosed;
+SndBuf congaLow;
 
-// change frequency of oscilator
-500 => myOsc.freq;
+// read samples and store in buffers
+dirSamples + nameHihatClosed + fileFormat => hihatClosed.read;
+dirSamples + nameCongaLow + fileFormat => congaLow.read;
 
-// let time flow again
-0.01 :: minute => now;
+0.5 => hihatClosed.gain;
+0.5 => congaLow.gain;
+
+1.0 => hihatClosed.rate;
+1.0 => congaLow.rate;
+
+0 => hihatClosed.pos;
+0 => congaLow.pos;
+
+100 :: ms => now;
