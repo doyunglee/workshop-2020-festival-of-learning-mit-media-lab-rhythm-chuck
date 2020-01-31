@@ -1,33 +1,31 @@
-// ex07-send.ck
+// ex07-sendPolyendPerc.ck
 // example of loading samples
 // runs on chuck 1.4.0.0
 // written by by aaron montoya-moraga & manaswi mishra
 // for mit media lab festival of learning 2020 
 
 // print file name
-<<< "ex07-send.ck" >>>;
+<<< "ex07-sendPolyendPerc.ck" >>>;
 
 // declare variables for host name and port
 "18.21.142.93" => string hostName;
-1234 => int hostPort;
+1236 => int hostPortPolyend;
 
 // declare Open Sound Control sender
 OscSend mySender;
 
 // point sender to receiver
 // ask to sender what their host name and port are
-mySender.setHost(hostName, hostPort);
+mySender.setHost(hostName, hostPortPolyend);
 
 // infinite loop
 while(true) 
     {
     // start new message
     // type i for one integer argument
-    mySender.startMsg( "/volcaBeats/noteOn", "i" );
+    mySender.startMsg( "/polyendPerc/noteOn", "i" );
     
     // send message by adding the argument
-    // 36: kick, 38: snare, 39: clap, 42: closed hihat
-    // 43: lo tom, 46: open hihat, 50: hi tom 
     36 => mySender.addInt;
     
     // let time flow

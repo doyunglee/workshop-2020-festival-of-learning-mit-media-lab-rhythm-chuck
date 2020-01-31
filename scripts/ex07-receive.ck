@@ -7,17 +7,17 @@
 // print file name
 <<< "ex07-receive.ck" >>>;
 
-// declare Open Sound Control receiver
-OscRecv myReceiver;
+// declare Open Sound Control receivers
+OscRecv myReceiverKorg;
 
-// declare port 
-1234 => myReceiver.port;
+// declare ports of receivers
+1234 => myReceiverKorg.port;
 
-// open port
-myReceiver.listen();
+// open ports of receivers
+myReceiverKorg.listen();
 
 // declare new OSC events for noteOn
-myReceiver.event("/volcaBeats/noteOn, i") @=> OscEvent noteOnEvent;
+myReceiverKorg.event("/korgVolcaBeats/noteOn, i") @=> OscEvent noteOnKorg;
 
 // declare new MidiOut variable
 MidiOut myOutput;
@@ -47,12 +47,12 @@ if (!myOutput.open(myPort)) {
 while (true) {
     
     // wait until new event
-    noteOnEvent => now;
+    noteOnKorg => now;
     
     // grab the next message from the queue.
-    while (noteOnEvent.nextMsg() != 0) {
+    while (noteOnKorg.nextMsg() != 0) {
         
-        noteOnEvent.getInt() => int noteOnNew;
+        noteOnKorg.getInt() => int noteOnNew;
         
         <<< "received", noteOnNew >>>;
         
