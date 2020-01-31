@@ -3,16 +3,16 @@
 // https://learn.adafruit.com/raspberry-pi-open-sound-control/setting-up-your-workstation
 
 // host name and port
-"18.21.142.93" => string hostname;
-6449 => int port;
+"18.21.142.93" => string hostOSC;
+6449 => int portOSC;
 
 // send object
 OscSend mySender;
 
-// aim the transmitter
-mySender.setHost( hostname, port );
+// point to host
+mySender.setHost(hostname, port);
 
-// infinite time loop
+// infinite loop
 while( true )
 {
     // start the message...
@@ -21,9 +21,9 @@ while( true )
     
     // a message is kicked as soon as it is complete 
     // - type string is satisfied and bundles are closed
-    Math.random2f( .5, 2.0 ) => float temp => mySender.addFloat;
+    Math.random2f( .5, 2.0 ) => float temp; => mySender.addFloat;
     <<< "sent (via OSC):", temp >>>;
     
-    // advance time
-    0.2::second => now;
+    // let time flow
+    0.2 :: second => now;
 }

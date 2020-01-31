@@ -16,7 +16,7 @@ MidiMsg myMsg;
 // declare new variable for midi port
 // check number on menu:
 // window -> device browser -> midi
-0 => myPort;
+2 => int myPort;
 
 // try to open the midi port, exit if fail
 if (!myOutput.open(myPort)) {
@@ -31,45 +31,61 @@ if (!myOutput.open(myPort)) {
 // byte2: note number
 // byte3: note velocity
 
-// in korg volca, we use 
+// in korg volca beats, we have these drum voices
+// 36: kick
+// 38: snare
+// 39: clap
+// 42: closed hihat
+// 43: lo tom
+// 46: open hihat
+// 50: hi tom
+
+// declare variables for drum voices
+[36, 38, 39, 42, 43, 46, 50] @=> int drumVoices[];
+
+// declare channel number, default for this instrument is 10
+10 => int channelNumber;
+
+// byte for noteOn in channel10
+// more info at midi.org
+143 + channelNumber => int noteOn;
+
+// drum sequences
+[1, 0, 0, 0,   0, 1, 0, 0] @=> int sequence0[];
+[0, 1, 1, 0,   0, 0, 1, 1] @=> int sequence1[];
+[0, 0, 0, 1,   0, 0, 0, 0] @=> int sequence2[];
 
 // infinite loop
 while (true) {
     
-    // iterate through the sequence
-    for (0 => int i; i < hihatClosedSequence.cap(); i++) {
+    // iterate through the sequencer
+    for (0 => int i; i < sequence0.cap(); i++) {
         
-        // default, all buffers fast forward
-        hihatClosed.samples() - 1 => hihatClosed.pos;
-        congaLow.samples() - 1 => congaLow.pos;
-        clap.samples() - 1 => clap.pos;
-        
-        // define buffer playback rate
-        -1.0 + Std.rand2f(-1.5, -1.0) => hihatClosed.rate;
-        0.2 + Std.rand2f(0.2, 0.7) => congaLow.rate;
-        -2.0 + Std.rand2f(0.2, 0.6) => clap.rate;        
-        
-        // define buffer gain
-        Std.rand2f(minGain, maxGain) => hihatClosed.gain;
-        Std.rand2f(minGain, maxGain) => congaLow.gain;
-        0.5 * Std.rand2f(minGain, maxGain) => clap.gain;
-        
-        // rewind if sequencer is 1
-        if (hihatClosedSequence[i] == 1) {
-            0 => hihatClosed.pos;
+        // sequence0 plays a drum voice 
+        if (sequence0[i] == 1) {
+           noteOn => myMsg.data1;
+           drumVoices[0]=> myMsg.data2;
+           100 => myMsg.data3;
+           myOutput.send(myMsg);
         }
         
-        // rewind if sequencer is 1
-        if (congaLowSequence[i] == 1) {
-            0 => congaLow.pos;
+        // sequence1 plays a drum voice
+        if (sequence1[i] == 1) {
+            noteOn => myMsg.data1;
+            drumVoices[3]=> myMsg.data2;
+            100 => myMsg.data3;
+            myOutput.send(myMsg);
         }
         
-        // rewind clap if probability
-        if (Std.rand2f(0.0, 1.0) < clapProbability) {
-            0 => clap.pos;
+        // sequence2 plays a drum voice
+        if (sequence2[i] == 1) {
+            noteOn => myMsg.data1;
+            drumVoices[1]=> myMsg.data2;
+            100 => myMsg.data3;
+            myOutput.send(myMsg);
         }
-
+                
         // let time flow
-        (timeStep + Std.rand2f(-timeMaxDelta, timeMaxDelta)) :: ms => now;
+        200 :: ms => now;
     }
 }
