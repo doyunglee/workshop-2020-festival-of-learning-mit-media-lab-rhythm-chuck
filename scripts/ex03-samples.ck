@@ -12,7 +12,7 @@
 <<< me.sourceDir() >>>;
 
 // create string variable for storing samples directory
-me.sourceDir() + "/../samples/" => string dirSamples;
+me.sourceDir() + "samples/" => string dirSamples;
 
 // print samples folder
 <<< dirSamples >>>;
@@ -25,20 +25,38 @@ me.sourceDir() + "/../samples/" => string dirSamples;
 ".wav" => string fileFormat;
 
 // create buffers for storing samples
-SndBuf hihatClosed;
-SndBuf congaLow;
+// connect them to dac
+SndBuf hihatClosed => dac;
+SndBuf congaLow => dac;
 
 // read samples and store in buffers
 dirSamples + nameHihatClosed + fileFormat => hihatClosed.read;
 dirSamples + nameCongaLow + fileFormat => congaLow.read;
 
-0.5 => hihatClosed.gain;
-0.5 => congaLow.gain;
+// infinite loop
+while (true) {
+    
+    // define buffer gain
+    0.3 => hihatClosed.gain;
+    0.3 => congaLow.gain;
+    
+    // define buffer playback rate
+    1.0 => hihatClosed.rate;
+    1.0 => congaLow.rate;
+    
+    // rewind the buffer hihatClosed
+    0 => hihatClosed.pos;
+    
+    // let time flow
+    100.0 :: ms => now;
+    
+    // rewind the buffer congaLow
+    0 => congaLow.pos;
+    
+    // let time flow
+    500.0 :: ms => now;
 
-1.0 => hihatClosed.rate;
-1.0 => congaLow.rate;
+}
 
-0 => hihatClosed.pos;
-0 => congaLow.pos;
 
-100 :: ms => now;
+
