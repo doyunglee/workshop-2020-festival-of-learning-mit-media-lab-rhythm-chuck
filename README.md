@@ -38,6 +38,10 @@ All ChucK commands end with a semicolon ";"
 * [ex07-sendKorgVolcaBeats](./scripts/ex07-sendKorgVolcaBeats.ck): Open Sound Control sender for Korg Volca Beats.
 * [ex07-sendPolyendPerc](./scripts/ex07-sendPolyendPerc.ck): Open Sound Control sender for Polyend Perc.
 
+## Samples
+
+The samples were recorded using a Roland TR-08 drum machine.
+
 ## Further learning
 
 There is a free [ChucK class at Kadenze](https://www.kadenze.com/courses/introduction-to-programming-for-musicians-and-digital-artists/info), a [ChucK book](https://www.manning.com/books/programming-for-musicians-and-digital-artists), and we highly recommend checking out [Ge Wang](https://www.gewang.com/)'s PhD [thesis](https://www.cs.princeton.edu/~gewang/thesis.html).
