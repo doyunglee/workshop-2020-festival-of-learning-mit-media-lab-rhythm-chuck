@@ -2,13 +2,17 @@
 
 ## About
 
-This is a workshop written and taught by [Aarón Montoya-Moraga](https://montoyamoraga.io/) and [Manaswi Mishra](https://manaswimishra.com/), research assistants at [MIT Media Lab](https://www.media.mit.edu/)'s [Opera of the Future](https://www.media.mit.edu/groups/opera-of-the-future/) research group.
+This workshop was written and taught by [Aarón Montoya-Moraga](https://montoyamoraga.io/) and [Manaswi Mishra](https://manaswimishra.com/), research assistants at [MIT Media Lab](https://www.media.mit.edu/)'s [Opera of the Future](https://www.media.mit.edu/groups/opera-of-the-future/) research group.
+
+This workshop happened at the MIT Media Lab Festival of Learning 2020, Friday January 31 2020.
 
 ## Software installation
 
 Today we are using [ChucK](https://chuck.cs.princeton.edu/), a free libre open-source software for computer music.
 
-Please download the ChucK installer or executable from the ChucK website, after which you will have an app called "miniAudicle" on your computer.
+Please download the ChucK installer (or executable from the ChucK website [chuck.cs.princeton.edu/](https://chuck.cs.princeton.edu/)
+
+After installation, you will have an app called "miniAudicle" on your computer.
 
 ## ChucK basics
 
@@ -36,22 +40,26 @@ All ChucK commands end with a semicolon ";"
 
 ## Further learning
 
-There is a free class at Kadenze, and there is a book of ChucK.
+There is a free [ChucK class at Kadenze](https://www.kadenze.com/courses/introduction-to-programming-for-musicians-and-digital-artists/info), a [ChucK book](https://www.manning.com/books/programming-for-musicians-and-digital-artists), and we highly recommend checking out [Ge Wang](https://www.gewang.com/)'s PhD [thesis](https://www.cs.princeton.edu/~gewang/thesis.html).
 
-Also please check out other cool programming languages used in computer music, such as:
+Here are some other cool programming languages for computer music, live coding, and computer art:
 
-* SuperCollider
-* Csound
-* Pure Data
-* Max
-* TidalCycles
-* FoxDot
+* [Csound](https://csound.com/)
+* [FoxDot](https://foxdot.org/)
+* [Hydra](https://github.com/ojack/hydra)
+* [Max](https://cycling74.com/)
+* [openFrameworks](https://openframeworks.cc/)
+* [p5.js](https://p5js.org/)
+* [Processing](https://processing.org/)
+* [Pure Data](https://puredata.info/)
+* [SuperCollider](https://supercollider.github.io/)
+* [TidalCycles](https://tidalcycles.org/)
 
-Some cool forums and communities:
+And some cool forums and communities:
 * [https://llllllll.co/](https://llllllll.co/): from Monome.
 * [https://chat.toplap.org/](https://chat.toplap.org/)
 * [https://livecode.nyc/](https://livecode.nyc/): community of live coders in NYC.
-* International Conference on Live Coding.
+* [International Conference on Live Coding](https://iclc.livecodenetwork.org/)
 
 ## License
 
