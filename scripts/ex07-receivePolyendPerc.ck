@@ -28,7 +28,7 @@ MidiMsg myMsg;
 // declare new variable for midi port
 // check number on menu:
 // window -> device browser -> midi
-2 => int myPort;
+4 => int myPort;
 
 // try to open midi ports, exit if fail
 if (!myOutput.open(myPort)) {
