@@ -11,22 +11,56 @@
 OscRecv myReceiver;
 
 // declare port 
-1440 => myReceiver.port;
+1234 => myReceiver.port;
 
 // open port
 myReceiver.listen();
 
 // declare new OSC events for noteOn
-myReceiver.event("/volcaBeats/noteOn") @=> OscEvent noteOn;
+myReceiver.event("/volcaBeats/noteOn, i") @=> OscEvent noteOnEvent;
+
+// declare new MidiOut variable
+MidiOut myOutput;
+
+// declare new midi message
+MidiMsg myMsg;
+
+// declare new variable for midi port
+// check number on menu:
+// window -> device browser -> midi
+2 => int myPort;
+
+// try to open the midi port, exit if fail
+if (!myOutput.open(myPort)) {
+    <<< "could not open MIDI port" >>>;
+    me.exit();
+}
+
+// declare channel number, default for this instrument is 10
+10 => int channelNumber;
+
+// byte for noteOn in channel10
+// more info at midi.org
+143 + channelNumber => int noteOn;
 
 // infinite loop
 while (true) {
     
     // wait until new event
-    noteOn => now;
+    noteOnEvent => now;
     
     // grab the next message from the queue.
-    while (noteOn.nextMsg() != 0) {
-        <<< "received", noteOn.getInt() >>>;
+    while (noteOnEvent.nextMsg() != 0) {
+        
+        noteOnEvent.getInt() => int noteOnNew;
+        
+        <<< "received", noteOnNew >>>;
+        
+        if (noteOnNew == 36 || noteOnNew == 38 || noteOnNew == 39 || noteOnNew == 42 || noteOnNew == 43 || noteOnNew == 46 || noteOnNew == 50) {
+            noteOn => myMsg.data1;
+            noteOnNew => myMsg.data2;
+            100 => myMsg.data3;
+            myOutput.send(myMsg);
+        }
     }
 }

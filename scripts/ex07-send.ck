@@ -9,22 +9,25 @@
 
 // declare variables for host name and port
 "18.21.142.93" => string hostName;
-1440 => int hostPort;
+1234 => int hostPort;
 
 // declare Open Sound Control sender
 OscSend mySender;
 
 // point sender to receiver
+// ask to sender what their host name and port are
 mySender.setHost(hostName, hostPort);
 
 // infinite loop
-while( true )
-{
+while(true) 
+    {
     // start new message
     // type i for one integer argument
     mySender.startMsg( "/volcaBeats/noteOn", "i" );
     
     // send message by adding the argument
+    // 36: kick, 38: snare, 39: clap, 42: closed hihat
+    // 43: lo tom, 46: open hihat, 50: hi tom 
     36 => mySender.addInt;
     
     // let time flow
