@@ -1,23 +1,23 @@
-// ex06-receive.ck
+// ex07-receivePolyendPerc.ck
 // example of loading samples
 // runs on chuck 1.4.0.0
 // written by by aaron montoya-moraga & manaswi mishra
 // for mit media lab festival of learning 2020 
 
 // print file name
-<<< "ex07-receive.ck" >>>;
+<<< "ex07-receivePolyendPerc.ck" >>>;
 
-// declare Open Sound Control receivers
-OscRecv myReceiverKorg;
+// declare Open Sound Control receiver
+OscRecv myReceiverPolyend;
 
-// declare ports of receivers
-1234 => myReceiverKorg.port;
+// declare port of receiver
+1236 => myReceiverPolyend.port;
 
-// open ports of receivers
-myReceiverKorg.listen();
+// open ports of receiver
+myReceiverPolyend.listen();
 
 // declare new OSC events for noteOn
-myReceiverKorg.event("/korgVolcaBeats/noteOn, i") @=> OscEvent noteOnKorg;
+myReceiverPolyend.event("/polyendPerc/noteOn, i") @=> OscEvent noteOnPolyend;
 
 // declare new MidiOut variable
 MidiOut myOutput;
@@ -30,7 +30,7 @@ MidiMsg myMsg;
 // window -> device browser -> midi
 2 => int myPort;
 
-// try to open the midi port, exit if fail
+// try to open midi ports, exit if fail
 if (!myOutput.open(myPort)) {
     <<< "could not open MIDI port" >>>;
     me.exit();
@@ -47,19 +47,19 @@ if (!myOutput.open(myPort)) {
 while (true) {
     
     // wait until new event
-    noteOnKorg => now;
+    noteOnPolyend => now;
     
     // grab the next message from the queue.
-    while (noteOnKorg.nextMsg() != 0) {
+    while (noteOnPolyend.nextMsg() != 0) {
         
-        noteOnKorg.getInt() => int noteOnNew;
+        noteOnPolyend.getInt() => int noteOnNew;
         
-        <<< "received", noteOnNew >>>;
+        <<< "receivedPolyend: ", noteOnNew >>>;
         
-        if (noteOnNew == 36 || noteOnNew == 38 || noteOnNew == 39 || noteOnNew == 42 || noteOnNew == 43 || noteOnNew == 46 || noteOnNew == 50) {
+        if (noteOnNew == 50) {
             noteOn => myMsg.data1;
             noteOnNew => myMsg.data2;
-            100 => myMsg.data3;
+            30 => myMsg.data3;
             myOutput.send(myMsg);
         }
     }

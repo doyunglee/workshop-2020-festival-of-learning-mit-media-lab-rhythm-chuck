@@ -26,7 +26,7 @@ while(true)
     mySender.startMsg( "/polyendPerc/noteOn", "i" );
     
     // send message by adding the argument
-    36 => mySender.addInt;
+    50 => mySender.addInt;
     
     // let time flow
     0.2 :: second => now;
